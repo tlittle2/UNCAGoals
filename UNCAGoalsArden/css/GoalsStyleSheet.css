@@ -1,0 +1,105 @@
+@charset "UTF-8";
+
+
+/*Boostrap*/
+
+.loginTable{
+    position:absolute;
+    margin-left:-200px; /* half of width */
+    margin-top:-150px;  /* half of height */
+    top:50%;
+    left:50%;
+   
+	
+  	
+}
+
+
+
+input {
+    margin-left: -2px;
+}
+
+
+a.statistics{
+	color: blue;
+	/*padding-top: 1%;
+	padding-left: 1%;*/
+	
+}
+
+
+/*original html form stuff*/
+html body{
+	background-color: #afb3b0;
+	
+	
+}
+
+table.tableTitle{
+	width: 75%;
+	margin: auto;
+	text-align: center;
+}
+
+table.updateTableTitle{
+	width: 75%;
+	height: 25px;
+	margin: auto;
+	text-align: center;
+}
+
+
+img.logo{
+	height: 40%; /*6.4*/
+	width: 25%;	 /*4*/
+}
+
+img.updateLogo{
+	height: 40%; 
+	width: 25%;	
+	
+}
+.center_div{
+	margin: auto;
+	width: 80%;
+}
+
+
+
+
+
+
+/*Change either the div or image tag or both later*/
+.imgdiv{
+	/*border-style: dotted;*/
+	height: 30px;
+	width: 30px;
+	
+}
+
+img{
+	/* 31 */
+	height: 104%;
+	width: 104%;
+}
+
+
+table.form{
+	table-layout: fixed;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: auto;
+	margin-bottom: auto;
+}
+
+td.ourTitle{
+	font-family: Verdana;
+	font-size: 130%;
+	text-decoration: underline;
+}
+
+.centerButton{
+
+	margin-left: 46%;
+}

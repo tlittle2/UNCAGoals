@@ -1,0 +1,69 @@
+@charset "ISO-8859-1";
+
+
+body{
+	background-color: #afb3b0;
+}
+
+.centertitle{
+	text-align: center;
+	font-family: Verdana;
+	font-size: 80%;	
+	text-decoration: underline;
+}
+
+.datecenter{
+	padding-left: 22%
+}
+
+table.logoff{
+	width: auto;
+    margin-right: 5px;
+    margin-left: auto;
+}
+
+td.noborder{
+	border: none;
+}
+
+
+td.noborder2{
+	border: none;
+}
+
+
+.delete{
+	height: 40px;
+	width: 40px;
+}
+
+
+td.gameResult{
+	font-weight: bold;
+}
+
+
+.dataTable{
+	border-style: none;
+	border-collapse: collapse;
+	table-align: center;
+	
+	
+}
+
+td{
+	text-align: center;
+	padding: 4px;
+
+
+}
+
+.red{
+	color: #DC143C;
+}	
+
+
+
+.green{
+	color: green;
+}
