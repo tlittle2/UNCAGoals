@@ -1,24 +1,25 @@
-<?php 
-    error_reporting(E_ALL);
-    ini_set('display_errors', 1);
-    include ("dbinfo.inc.php");
-    $con = mysqli_connect($hostname, $username, $password, $database);
-    if (mysqli_connect_errno($con)) {
-        echo "Failed to connect to MySQL: " . mysqli_connect_error();
-        die("I am doomed!!");
-    }
-       
-    /*    
-    if(isset($_SESSION['userlogin'])){
-        echo '"<script type= text/javascript> window.location= "https://www.cs.unca.edu/~tlittle2/UNCAGoals/scripts/BulldogGoals.php"</script>';
-        
-    }else{
-        echo '"<script type= text/javascript> window.location= "https://www.cs.unca.edu/~tlittle2/UNCAGoals/scripts/loginForm.html"</script>';
-    }
-    */
-    
-    
+<?php
+session_set_cookie_params(0); //session_set_cookie_params('600'); // 10 minutes.
+session_start();
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+include ("dbinfo.inc.php");
+$con = mysqli_connect($hostname, $username, $password, $database);
 
+if (mysqli_connect_errno($con)) {
+    echo "Failed to connect to MySQL: " . mysqli_connect_error();
+    die("I am doomed!!");
+}
+       
+        
+#echo $_SESSION['userlogin'];
+if(!isset($_SESSION['userlogin'])){
+    echo '"<script type= text/javascript> window.location= "https://www.cs.unca.edu/~tlittle2/UNCAGoals/scripts/loginForm.html"</script>"';
+    session_unset();
+    session_destroy();
+}
+   
+   
 ?>
 
 <!DOCTYPE html>
@@ -26,11 +27,13 @@
 <head>
 
 
-<base href= "https://www.cs.unca.edu/~tlittle2/UNCAGoals/scripts/BulldogGoals.php">
+<!-- <base href= "https://www.cs.unca.edu/~tlittle2/UNCAGoals/scripts/BulldogGoals.php"> -->
 <title>Team Statistics</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" type = "text/css" href="../css/GoalStyleSheet2.css">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="https://cdn.rawgit.com/rainabba/jquery-table2excel/1.1.0/dist/jquery.table2excel.min.js"></script>
 
 <script src="GoalsJS.js"></script>
 </head>
@@ -98,10 +101,14 @@ numOfAtBats, goalsTotal FROM uncagoals ORDER BY date DESC";
     </form>
     <br><br>
     
-<center><a href= 'https://www.cs.unca.edu/~tlittle2/UNCAGoals/queries/seeAll.php' target= "blank">Click here to see all time stats</a></center>
+<center><a href= 'https://www.cs.unca.edu/~tlittle2/UNCAGoals/queries/seeAll.php' target= "blank">Click here to see all time stats</a> 
+
+&nbsp; &nbsp; &nbsp;
+<input type= "submit" value = "Export" id= "export" onclick= "Table2Excel()"> 
+</center>
 
 <!--  <a href= "#bottom">Click here to go to the bottom</a>-->
-        <table border="1"  class= "dataTable">
+        <table border="1"  class= "dataTable" id= "dataTable">
 		<tr>
 			<!-- <th>ID</th> -->
 			<th>Date</th>

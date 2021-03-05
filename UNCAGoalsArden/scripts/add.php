@@ -1,4 +1,5 @@
 <?php
+session_set_cookie_params(0); 
 session_start();
 //set connection
 error_reporting(E_ALL);

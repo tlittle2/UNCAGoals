@@ -18,53 +18,6 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
 
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-      google.charts.load('current', {'packages':['bar']});
-      google.charts.setOnLoadCallback(drawStuff);
-
-      function drawStuff() {
-        var data = new google.visualization.arrayToDataTable([
-          ['Goal Name', 'Count of Goal'],
-          ['Runs Scored', 8000],
-          ['Qualities', 8000],
-          ['Big Innings', 24000],
-          ['Freebies Taken', 30000],
-          ['Total Bases', 30000],
-          ['Runs Allowed', 50000],
-          ['Freebies Allowed', 60000],
-          ['Big Innings Allowed', 60000],
-          ['Leadoff Outs', 60000],
-          ['Pitches Thrown', 60000]
-        ]);
-
-        var options = {
-          width: 800,
-          chart: {
-            title: 'Amount of Times a Goal Reached',
-            subtitle: ''
-          },
-          bars: 'horizontal', // Required for Material Bar Charts.
-          series: {
-            0: { axis: '' }, // Bind series 0 to an axis named 'distance'.
-            1: { axis: '' } // Bind series 1 to an axis named 'brightness'.
-          },
-          axes: {
-            x: {
-              distance: {label: 'parsecs'}, // Bottom x-axis.
-              brightness: {side: 'top', label: 'apparent magnitude'} // Top x-axis.
-            }
-          }
-        };
-
-      var chart = new google.charts.Bar(document.getElementById('dual_x_div'));
-      chart.draw(data, options);
-    };
-    </script>
-
-
-
-
 </head>
 <body>
 <?php
@@ -173,11 +126,6 @@ while($row = mysqli_fetch_assoc($result10)){
     echo "Average time we get the lead off out: ". round($row['averageLeadOut'],2) *10 . "/9";
 }
 
-echo "<br><br><br>";
-
-
-echo "Number of Times we have met each goal";
-echo "<br>";
 include("countsAllTime.php");
 
 
@@ -185,7 +133,7 @@ include("countsAllTime.php");
 
 
 <!-- PUT GOOGLE CHART HERE? -->
- <div id="dual_x_div" style="width: 900px; height: 500px;"></div>
+ <div id="time_div" style="width: 800px; height: 400px;"></div>
 
 
 

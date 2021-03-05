@@ -1,5 +1,4 @@
-<?php
-
+<?php 
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 include ("../scripts/dbinfo.inc.php");
@@ -156,16 +155,16 @@ while ($row = mysqli_fetch_array($result)) {
             		       
             		   
             		   if($goalsTotal >= 7){
-            		       echo "<td class= 'green'>$goalsTotal/10</td>";
+            		       echo "<td class= 'green'>$goalsTotal/10 &nbsp;</td>";
             		       
             		   }else{
-            		       echo "<td class= 'red'>$goalsTotal /10</td>";
+            		       echo "<td class= 'red'>$goalsTotal/10 &nbsp;</td>";
             		       
             		   }
         			?>
         		
-        			<td class= "noborder"><a href= "delete.php? id= <?php echo $id;?>"><input type= "image" src= "../img/delete.png" class= "delete" alt= "Delete this row" onclick="return confirm('Are you sure you want to delete this record?')"></a></td>
-        			<td class= "noborder2"><a href= "update.php? id= <?php echo $id?> "><img src= "../img/update.png" class= "update"></a></td>
+        			<td class= "noborder" id = "delete"><a href= "delete.php? id= <?php echo $id;?>"><input type= "image" src= "../img/delete.png" class= "delete" alt= "Delete this row" onclick="return confirm('Are you sure you want to delete this record?')"></a></td>
+        			<td class= "noborder2" id= "update"><a href= "update.php? id= <?php echo $id?> "><img src= "../img/update.png" class= "update"></a></td>
 			
 			</tr>	
 			 

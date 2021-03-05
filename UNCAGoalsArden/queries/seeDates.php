@@ -11,6 +11,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" type = "text/css" href="css/GoalsStyleSheet.css">
+<link rel="stylesheet" type = "text/css" href="css/GoalsStyleSheet2.css">
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 
 
@@ -28,7 +29,8 @@
         die("I am doomed!!");
         
     }
-    
+
+
     $date1= $_POST['date1'];
     $newDate1 = date("m-d-Y", strtotime($date1));
     //echo "date1 is $newDate1";
@@ -41,8 +43,163 @@
     
     echo "From TimeFrame $newDate1 to $newDate2";
     echo "<br><br>";
-
+   
+/*
+    echo"<table border='1'  class= 'dataTable' id= 'dataTable'>
+    <tr>
+    <!-- <th>ID</th> -->
+    <th>Date</th>
+    <th>Opponent</th>
+    <th>>= 6 Runs</th>
+    <th>50% Quality at-Bats</th>
+    <th> >= 9 Freebies </th>
+    <th> 1+ Big Inning</th>
+    <th>>= 13 Total Bases</th>
+    <th> <= 5 Runs </th>
+    <th> <= 8 Freebies </th>
+    <th>No Big Innings</th>
+    <th> >= 4 Leadoff Outs</th>
+    <th> < 150 Pitches Thrown </th>
+    <th>Game Result</th>
+    <th>Goals Met</th>
+    <!--  <th>Delete</th>
+    <th>Update</th>-->
+    </tr>";
+   
+    //records from timeframe
+    $records = $con->prepare("SELECT id, date, opponent, runsScored, qualities, ourFreebies, ourBigInning, totalBases, runsAllowed, freebiesAllowed, 
+bigInningAllowed, leadoffOuts, pitchesThrown, gameResult, numOfQualities, numOfAtBats, goalsTotal FROM uncagoals WHERE date BETWEEN ? AND ? ORDER BY date DESC");
+    $records->bind_param("ss", $date1, $date2);
+    $records-> execute();
+    $records -> bind_result($id, $date, $opponent, $runsScored, $qualities, $ourFreebies, $ourBigInning, $totalBases, $runsAllowed, $freebiesAllowed, 
+        $bigInningAllowed, $leadoffOuts, $pitchesThrown, $gameResult, $numOfQualities, $numOfAtBats, $goalsTotal);
     
+    
+    while($records->fetch()){
+        $qualityRounded= round($qualities, 2) *100 . '%';
+        $newDate = date("m-d-Y", strtotime($date));
+
+        echo "<tr>";
+            echo "<td> $newDate </td>";
+            echo "<td> $opponent </td>";
+            if($runsScored >= 6){
+                echo "<td class= 'green'>$runsScored </td>";
+            }else{
+                echo "<td class= 'red'>$runsScored </td>";
+            }
+            
+            
+            
+            if($qualities >= 0.5){
+                echo "<td class= 'green'>$qualityRounded</td>";
+            }else{
+                echo "<td class= 'red'>$qualityRounded</td>";
+            }
+            
+            
+            
+            if($ourFreebies >= 9){
+                echo "<td class= 'green'>$ourFreebies</td>";
+                
+            }else{
+                echo "<td class= 'red'>$ourFreebies</td>";
+                
+                
+            }
+            
+            
+            if($ourBigInning >= 1){
+                echo "<td class= 'green'>$ourBigInning</td>";
+                
+            }else{
+                echo "<td class= 'red'>$ourBigInning</td>";
+                
+            }
+            
+
+            
+            if($totalBases >=13){
+                echo "<td class= 'green'>$totalBases</td>";
+                
+            }else{
+                echo "<td class= 'red'>$totalBases</td>";
+                
+            }
+            
+
+            
+            if($runsAllowed <= 5){
+                echo "<td class= 'green'>$runsAllowed</td>";
+                
+            }else{
+                echo "<td class= 'red'>$runsAllowed</td>";
+                
+            }
+            
+            
+            if($freebiesAllowed <= 8){
+                echo "<td class= 'green'>$freebiesAllowed</td>";
+                
+            }else{
+                echo "<td class= 'red'>$freebiesAllowed</td>";
+                
+            }
+            
+            
+            
+            if($bigInningAllowed == 0 ){
+                echo "<td class= 'green'>$bigInningAllowed</td>";
+                
+            }else{
+                echo "<td class= 'red'>$bigInningAllowed</td>";
+                
+            }
+            
+            
+            if($leadoffOuts >= 4){
+                echo "<td class= 'green'>$leadoffOuts</td>";
+                
+            }else{
+                echo "<td class= 'red'>$leadoffOuts</td>";
+                
+            }
+            
+            
+            if($pitchesThrown < 150){
+                echo "<td class= 'green'>$pitchesThrown</td>";
+                
+            }else{
+                echo "<td class= 'red'>$pitchesThrown</td>";
+                
+            }
+            
+            
+            
+            if($gameResult == 'W'){
+                echo "<td class= 'green' style= 'font-weight: bold;'>$gameResult</td>";
+                
+            }else{
+                echo "<td class= 'red' style= 'font-weight: bold;'>$gameResult</td>";
+                
+            }
+            
+            
+            if($goalsTotal >= 7){
+                echo "<td class= 'green'>$goalsTotal/10 &nbsp;</td>";
+                
+            }else{
+                echo "<td class= 'red'>$goalsTotal/10 &nbsp;</td>";
+                
+            }
+        echo "</tr>";
+            
+        
+    }
+    
+    $records -> close();
+*/
+    
+        echo "<br>";
     //As A TEAM
         //Average Goals per Game
     echo "As a Team:";
@@ -156,18 +313,20 @@
         echo "Average time we get the lead off out: ". round($averageLeadOut,2) *10 . "/9";
     $query10->close();
     
-    echo "<br><br><br><br>";
+    echo "<br>";
     
 //Include is here
-    echo "# of Times We Reached a Goal";
-    echo "<br>";
     include("countsByDate.php");
-   
+
+    ?>
+    
+    <div id="dates_div" style="width: 900px; height: 400px;"></div>
     
     
     
+    <?php
+    mysqli_close($con);
+    ?>
     
-mysqli_close($con);
-?>
 </body>
 </html>

@@ -19,23 +19,24 @@ $date2= $_POST['date2'];
 $newDate2 = date("m-d-Y", strtotime($date2));
 //echo "date2 is $newDate2";
 
-
 $count1 = $con->prepare("SELECT COUNT(runsScored) as runsScoredThres FROM uncagoals WHERE runsScored >=6 AND uncagoals.date BETWEEN ? AND ?");
 $count1->bind_param("ss", $date1, $date2);
 $count1-> execute();
 $count1-> bind_result($runsScoredThres);
 $count1-> fetch();
-echo "RunsScored: " . $runsScoredThres;
+
+$valuesArray['RunsScored'] = "$runsScoredThres";
 $count1->close();
 
 echo "<br>";
 
-$count2 = $con->prepare("SELECT COUNT(qualities) AS qualitiesThres FROM uncagoals WHERE runsScored >=0.5 AND uncagoals.date BETWEEN ? AND ?");
+$count2 = $con->prepare("SELECT COUNT(qualities) AS qualitiesThres FROM uncagoals WHERE qualities >=0.5 AND uncagoals.date BETWEEN ? AND ?");
 $count2->bind_param("ss", $date1, $date2);
 $count2-> execute();
 $count2-> bind_result($qualitiesThres);
 $count2-> fetch();
-echo "Qualities: " . $qualitiesThres;
+
+$valuesArray['Qualities'] = "$qualitiesThres";
 $count2->close();
 
 
@@ -46,7 +47,8 @@ $count3->bind_param("ss", $date1, $date2);
 $count3-> execute();
 $count3-> bind_result($ourFThres);
 $count3-> fetch();
-echo "OurFreebies: " . $ourFThres;
+
+$valuesArray['OurFreebies'] = "$ourFThres";
 $count3->close();
 
 echo "<br>";
@@ -56,7 +58,8 @@ $count4->bind_param("ss", $date1, $date2);
 $count4-> execute();
 $count4-> bind_result($ourBigInningThres);
 $count4-> fetch();
-echo "Our Big Inning: " . $ourBigInningThres;
+
+$valuesArray['OurBigInning'] = "$ourBigInningThres";
 $count4->close();
     
 
@@ -67,7 +70,8 @@ $count5->bind_param("ss", $date1, $date2);
 $count5-> execute();
 $count5-> bind_result($totalBasesThres);
 $count5-> fetch();
-echo "Total Bases: " . $totalBasesThres;
+
+$valuesArray['TotalBases'] = "$totalBasesThres";
 $count5->close();
 
 echo "<br>";
@@ -77,7 +81,8 @@ $count6->bind_param("ss", $date1, $date2);
 $count6-> execute();
 $count6-> bind_result($runsAllowedThres);
 $count6-> fetch();
-echo "Runs Allowed: " . $runsAllowedThres;
+
+$valuesArray['RunsAllowed'] = "$runsAllowedThres";
 $count6->close();
 
 echo "<br>";
@@ -87,7 +92,8 @@ $count7->bind_param("ss", $date1, $date2);
 $count7-> execute();
 $count7-> bind_result($freebiesAllowedThres);
 $count7-> fetch();
-echo "Freebies Allowed: " . $freebiesAllowedThres;
+
+$valuesArray['FreebiesAllowed'] = "$freebiesAllowedThres";
 $count7->close();
 
 
@@ -98,7 +104,8 @@ $count8->bind_param("ss", $date1, $date2);
 $count8-> execute();
 $count8-> bind_result($bigInningAllowedThres);
 $count8-> fetch();
-echo "Big Inning Allowed: " . $bigInningAllowedThres;
+
+$valuesArray['BigInningAllowed'] = "$bigInningAllowedThres";
 $count8->close();
 
 
@@ -109,7 +116,8 @@ $count9->bind_param("ss", $date1, $date2);
 $count9-> execute();
 $count9-> bind_result($leadoffOutThres);
 $count9-> fetch();
-echo "Leadoff Outs: " . $leadoffOutThres;
+
+$valuesArray['LeadoffOuts']= "$leadoffOutThres";
 $count9->close();
    
 
@@ -120,9 +128,61 @@ $count10->bind_param("ss", $date1, $date2);
 $count10-> execute();
 $count10-> bind_result($pitchesThrownThres);
 $count10-> fetch();
-echo "Pitches Thrown: " . $pitchesThrownThres;
+
+$valuesArray['PitchesThrown'] = "$pitchesThrownThres";
 $count10->close();
-    
-    
+
+
+#echo json_encode($valuesArray);
 
 ?>
+
+
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(drawStuff);
+
+      var xhr = new XMLHttpRequest();
+
+      function drawStuff() {
+        var data = new google.visualization.arrayToDataTable([
+          ['Goal Name', 'Count of Goal'],
+          ['>= 6 Runs', <?php echo $valuesArray['RunsScored']?>],
+          ['50% Qualities', <?php echo $valuesArray['Qualities']?>],
+          ['>=9 Freebies', <?php echo $valuesArray['OurBigInning']?>],
+          ['1+ Big Inning', <?php echo $valuesArray['OurFreebies']?>],
+          ['>=13 Total Bases', <?php echo $valuesArray['TotalBases']?>],
+          ['<=5 Runs', <?php echo $valuesArray['RunsAllowed']?>],
+          ['<=8 Freebies', <?php echo $valuesArray['FreebiesAllowed']?>],
+          ['0 Big Innings', <?php echo $valuesArray['BigInningAllowed']?>],
+          ['>=4 Leadoff Outs', <?php echo $valuesArray['LeadoffOuts']?>],
+          ['< 150 Pitches Thrown', <?php echo $valuesArray['PitchesThrown']?>]
+        ]);
+
+        var options = {
+          width: 800,
+          chart: {
+            title: 'Times Goals were Reached',
+            subtitle: ''
+          },
+          bars: 'horizontal', // Required for Material Bar Charts.
+          series: {
+            0: { axis: '' }, // Bind series 0 to an axis named 'distance'.
+            1: { axis: '' } // Bind series 1 to an axis named 'brightness'.
+          },
+          axes: {
+            x: {
+              distance: {label: 'times'}, // Bottom x-axis.
+              brightness: {side: 'top', label: 'apparent magnitude'} // Top x-axis.
+            }
+          }
+        };
+
+      var chart = new google.charts.Bar(document.getElementById('dates_div'));
+      chart.draw(data, options);
+    };
+    </script>
+

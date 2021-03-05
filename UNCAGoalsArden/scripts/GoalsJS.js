@@ -201,5 +201,22 @@ function validDates(){
 }
 
 
+function Table2Excel(){
+	console.log("inside Table2Excel");
+	var d = new Date();
+	var strDate =  (d.getMonth()+1) + "-" + d.getDate() + "-" + d.getFullYear();
+	console.log(strDate);
+	$("#dataTable").remove("#update").table2excel({ 
+        filename: "Goals_" + strDate +".xls",
+        exclude_links: true,
+        exclude_img: true,
+        columns : [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14]
+
+	});
+
+}
+ 
+
+
 
 
