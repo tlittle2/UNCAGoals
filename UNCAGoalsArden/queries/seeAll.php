@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 
 
@@ -32,6 +32,10 @@ if (mysqli_connect_errno($con)) {
 }
 
 
+echo "All-Time Statistics";
+
+echo "<br><br>";
+
 //As A TEAM
 //Average Goals per Game
 echo "As a Team:";
@@ -47,7 +51,15 @@ while($row = mysqli_fetch_assoc($result1)){
 
 echo "<br>";
 
+$query = "SELECT SUM(runsScored) - SUM(runsAllowed) as RunDifferential FROM uncagoals;";
+$result = mysqli_query($con, $query);
+while($row = mysqli_fetch_assoc($result)){
+    echo "Run Differential: ". ($row['RunDifferential']);
+}   
 
+
+
+echo "<br>";
 
 //What 5 goals are most prevalent when we win/lose?
 
@@ -120,10 +132,10 @@ echo "<br>";
 
 
 //Average amount of time we are getting the leadoff out
-$query10 = "SELECT AVG(leadoffOuts / 9) as averageLeadOut FROM uncagoals";
+$query10 = "SELECT AVG(leadoffOuts) as averageLeadOut FROM uncagoals";
 $result10 = mysqli_query($con, $query10);
 while($row = mysqli_fetch_assoc($result10)){
-    echo "Average time we get the lead off out: ". round($row['averageLeadOut'],2) *10 . "/9";
+    echo "Average time we get the lead off out: ". round($row['averageLeadOut'],2) . "/9";
 }
 
 include("countsAllTime.php");

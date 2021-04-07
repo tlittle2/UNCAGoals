@@ -201,8 +201,8 @@ function validDates(){
 }
 
 
-function Table2Excel(){
-	console.log("inside Table2Excel");
+function Table2ExcelGoals(){
+	console.log("inside Table2ExcelGoals");
 	var d = new Date();
 	var strDate =  (d.getMonth()+1) + "-" + d.getDate() + "-" + d.getFullYear();
 	console.log(strDate);
@@ -210,7 +210,22 @@ function Table2Excel(){
         filename: "Goals_" + strDate +".xls",
         exclude_links: true,
         exclude_img: true,
-        columns : [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14]
+        columns : [0,1,2,3,4,5,6,7,8,9,10,11,12,13]
+
+	});
+
+}
+
+function Table2ExcelStats(){
+	console.log("inside Table2ExcelStats");
+	var d = new Date();
+	var strDate =  (d.getMonth()+1) + "-" + d.getDate() + "-" + d.getFullYear();
+	console.log(strDate);
+	$("#hitterTable").remove("#update").table2excel({ 
+        filename: "Hitter_Stats" + strDate +".xls",
+        exclude_links: true,
+        exclude_img: true,
+        columns : [0,1,2,3,4,5,6,7,8,9,10,11,12,13]
 
 	});
 

@@ -1,6 +1,11 @@
 @charset "ISO-8859-1";
 
 
+div.center{
+	margin: auto;
+    width: 20%;
+}
+
 body{
 	background-color: #afb3b0;
 }
@@ -27,8 +32,18 @@ td.noborder{
 }
 
 
+
 td.noborder2{
 	border: none;
+}
+
+
+th.border{
+	border: solid 1px black;
+}
+
+td.border{
+	border: solid 1px black;
 }
 
 

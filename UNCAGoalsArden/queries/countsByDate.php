@@ -133,7 +133,7 @@ $valuesArray['PitchesThrown'] = "$pitchesThrownThres";
 $count10->close();
 
 
-#echo json_encode($valuesArray);
+#   echo json_encode($valuesArray);
 
 ?>
 
@@ -152,8 +152,8 @@ $count10->close();
           ['Goal Name', 'Count of Goal'],
           ['>= 6 Runs', <?php echo $valuesArray['RunsScored']?>],
           ['50% Qualities', <?php echo $valuesArray['Qualities']?>],
-          ['>=9 Freebies', <?php echo $valuesArray['OurBigInning']?>],
-          ['1+ Big Inning', <?php echo $valuesArray['OurFreebies']?>],
+          ['>=9 Freebies', <?php echo $valuesArray['OurFreebies']?>],
+          ['1+ Big Inning', <?php echo $valuesArray['OurBigInning']?>],
           ['>=13 Total Bases', <?php echo $valuesArray['TotalBases']?>],
           ['<=5 Runs', <?php echo $valuesArray['RunsAllowed']?>],
           ['<=8 Freebies', <?php echo $valuesArray['FreebiesAllowed']?>],

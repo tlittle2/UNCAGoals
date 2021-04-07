@@ -23,9 +23,8 @@ if(!isset($_SESSION['userlogin'])){
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-
 
 <!-- <base href= "https://www.cs.unca.edu/~tlittle2/UNCAGoals/scripts/BulldogGoals.php"> -->
 <title>Team Statistics</title>
@@ -47,10 +46,21 @@ if(!isset($_SESSION['userlogin'])){
     echo "</table>";
     
     echo "<table border= '0'>";
+    echo "<tr>";
     echo "<td>";
     echo "<a href= 'https://www.cs.unca.edu/~tlittle2/UNCAGoals/index2.php' target= 'blank'> Add a new game here</a>";
     echo "</td>";
+    echo "</tr>";
+    
+    echo "<tr>";
     echo "<td>";
+    echo "<a href = 'hitterStats.php' target = '_blank'>2021 Hitter Stats </a>";
+    echo "</td>";
+        
+    echo "<td>";
+    echo "<a href = 'pitcherStats.php' target = '_blank'>2021 Pitcher Stats </a>";
+    echo "</td>";
+    echo "</tr>";
     echo "</table>";
     
        
@@ -60,7 +70,7 @@ if(!isset($_SESSION['userlogin'])){
 <?php 
     
     $query = "SELECT id, date, opponent, runsScored, qualities, ourFreebies, ourBigInning, totalBases, runsAllowed, freebiesAllowed, bigInningAllowed, leadoffOuts, pitchesThrown, gameResult, numOfQualities, 
-numOfAtBats, goalsTotal FROM uncagoals ORDER BY date DESC";
+numOfAtBats, goalsTotal FROM uncagoals ORDER BY id DESC";
     $result = mysqli_query($con, $query);
     
     $num = mysqli_num_rows($result);
@@ -101,30 +111,31 @@ numOfAtBats, goalsTotal FROM uncagoals ORDER BY date DESC";
     </form>
     <br><br>
     
-<center><a href= 'https://www.cs.unca.edu/~tlittle2/UNCAGoals/queries/seeAll.php' target= "blank">Click here to see all time stats</a> 
+<div class = "center">
+<a href= 'https://www.cs.unca.edu/~tlittle2/UNCAGoals/queries/seeAll.php' target= "blank">Click here to see all time stats</a> 
 
 &nbsp; &nbsp; &nbsp;
-<input type= "submit" value = "Export" id= "export" onclick= "Table2Excel()"> 
-</center>
+<input type= "submit" value = "Export" id= "export" onclick= "Table2ExcelGoals()"> 
+</div>
 
 <!--  <a href= "#bottom">Click here to go to the bottom</a>-->
-        <table border="1"  class= "dataTable" id= "dataTable">
+        <table class= "dataTable" id= "dataTable">
 		<tr>
 			<!-- <th>ID</th> -->
-			<th>Date</th>
-			<th>Opponent</th>
-			<th>>= 6 Runs</th>
-			<th>50% Quality at-Bats</th>
-			<th> >= 9 Freebies </th>
-			<th> 1+ Big Inning</th>
-			<th>>= 13 Total Bases</th>
-			<th> <= 5 Runs </th>
-			<th> <= 8 Freebies </th>
-			<th>No Big Innings</th>
-			<th> >= 4 Leadoff Outs</th>
-			<th> < 150 Pitches Thrown </th>
-			<th>Game Result</th>
-			<th>Goals Met</th>
+			<th class= "border">Date</th>
+			<th class= "border">Opponent</th>
+			<th class= "border">>= 6 Runs</th>
+			<th class= "border">>50% Quality at-Bats</th>
+			<th class= "border"> >= 9 Freebies </th>
+			<th class= "border"> 1+ Big Inning</th>
+			<th class= "border">>= 13 Total Bases</th>
+			<th class= "border"> &lt;= 5 Runs </th>
+			<th class= "border"> &lt;= 8 Freebies </th>
+			<th class= "border">No Big Innings</th>
+			<th class= "border"> >= 4 Leadoff Outs</th>
+			<th class= "border"> &lt; 150 Pitches Thrown </th>
+			<th class= "border">Game Result</th>
+			<th class= "border">Goals Met</th>
 			<!--  <th>Delete</th>
 			<th>Update</th>-->
 		</tr>

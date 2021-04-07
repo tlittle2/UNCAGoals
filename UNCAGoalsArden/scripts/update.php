@@ -75,7 +75,7 @@
         $leadoffOuts= $row['leadoffOuts'];
         $pitchesThrown= $row['pitchesThrown'];
         $gameResult= $row['gameResult'];
-    }  
+    }
 ?>
 
     <table class= "updateTableTitle">
@@ -97,7 +97,7 @@
     	
     		<tr>
         		<td>Opponent: </td>
-        		<td><input type= "text" id = "opponent"  name= "opponent" min= "1" max= "20"  value= <?php echo $opponent?> required></td>
+        		<td><input type= "text" id = "opponent"  name= "opponent" min= "1" max= "45"  value= '<?php echo $opponent?>' required></td>
     		</tr>
     		
     		
@@ -162,13 +162,13 @@
     	
    
     	<tr>
-    		<td> <=5 Runs:</td>
+    		<td> &lt;=5 Runs:</td>
     		<td><input type= "text" id= "hDRuns" name= "runsAllowed" min= "1" max= "9" value= <?php echo $runsAllowed?> required><br></td>
     		
     	</tr>
     	
     	<tr>
-    		<td> <=8 Freebies:</td>
+    		<td> &lt;=8 Freebies:</td>
     		<td><input type= "text" id= "hDFreebies" name= "freebiesAllowed" min= "1" max= "9" value= <?php echo $freebiesAllowed?> required><br></td>
     		
     	</tr>
@@ -185,7 +185,7 @@
     	
     	</tr>
     	<tr>
-    		<td> < 150 Pitches Thrown:</td>
+    		<td> &lt; 150 Pitches Thrown:</td>
     		<td><input type= "text" id= "hPitchesThrown" name= "pitchesThrown"  min= "1" max= "9" value= <?php echo $pitchesThrown?> required><br></td>
     		
     	</tr>
@@ -195,7 +195,6 @@
     	</tr>
     	
     	
-    	</tr>
     	<tr>
     		<td> Game Result (W or L):</td>
     		<td><input type= "text" id= "hGameResult" name= "gameResult" size= "9" value= <?php echo $gameResult?> required><br></td>

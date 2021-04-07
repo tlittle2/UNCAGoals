@@ -5,7 +5,7 @@ session_start();
 
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 
 
@@ -155,13 +155,13 @@ session_start();
     	
    
     	<tr>
-    		<td> <=5 Runs:</td>
+    		<td> &lt;=5 Runs:</td>
     		<td><input type= "text" id= "hDRuns" name= "runsAllowed" min= "1" max= "9" required><br></td>
     		<td><div id = "imgdiv" class= "imgdiv"></div></td>
     	</tr>
     	
     	<tr>
-    		<td> <=8 Freebies:</td>
+    		<td> &lt;=8 Freebies:</td>
     		<td><input type= "text" id= "hDFreebies" name= "freebiesAllowed" min= "1" max= "9" required><br></td>
     		<td><div id = "imgdiv" class= "imgdiv"></div></td>
     	</tr>
@@ -178,7 +178,7 @@ session_start();
     	
     	</tr>
     	<tr>
-    		<td> < 150 Pitches Thrown:</td>
+    		<td> &lt; 150 Pitches Thrown:</td>
     		<td><input type= "text" id= "hPitchesThrown" name= "pitchesThrown"  min= "1" max= "9" required><br></td>
     		<td><div id = "imgdiv" class= "imgdiv"></div></td>
     	</tr>
@@ -186,9 +186,7 @@ session_start();
     	<tr>
     		<td>----------------------------</td>
     	</tr>
-    	
-    	
-    	</tr>
+    
     	<tr>
     		<td> Game Result (W or L):</td>
     		<td><input type= "text" id= "hGameResult" name= "gameResult" size= "9" required><br></td>

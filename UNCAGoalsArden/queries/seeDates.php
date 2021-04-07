@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 
 
@@ -223,6 +223,17 @@ bigInningAllowed, leadoffOuts, pitchesThrown, gameResult, numOfQualities, numOfA
     }
     */
     echo "<br>";
+    
+    $query = $con->prepare("SELECT SUM(runsScored) - SUM(runsAllowed) as RunDifferential FROM uncagoals WHERE date BETWEEN ? AND ?");
+    $query->bind_param("ss", $date1, $date2);
+    $query->execute();
+    $query->bind_result($RunDifferential);
+    $query->fetch();
+    echo "Run Differential: " . ($RunDifferential);
+    $query->close();
+    
+    
+    echo "<br>";
    
  
     //What 5 goals are most prevalent when we win/lose?
@@ -305,12 +316,12 @@ bigInningAllowed, leadoffOuts, pitchesThrown, gameResult, numOfQualities, numOfA
     
     
     //Average amount of time we are getting the leadoff out
-    $query10 = $con->prepare("SELECT AVG(leadoffOuts / 9) as averageLeadOut FROM uncagoals WHERE date BETWEEN ? AND ?");
+    $query10 = $con->prepare("SELECT AVG(leadoffOuts) as averageLeadOut FROM uncagoals WHERE date BETWEEN ? AND ?");
     $query10->bind_param("ss", $date1, $date2);
     $query10-> execute();
     $query10-> bind_result($averageLeadOut);
     $query10-> fetch();
-        echo "Average time we get the lead off out: ". round($averageLeadOut,2) *10 . "/9";
+        echo "Average time we get the lead off out: ". round($averageLeadOut,2) . "/9";
     $query10->close();
     
     echo "<br>";
