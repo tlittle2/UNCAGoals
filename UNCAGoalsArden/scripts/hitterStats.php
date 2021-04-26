@@ -105,8 +105,8 @@ while ($row = mysqli_fetch_array($result)) {
 
 	<tr>
 		<td><?php echo "$playerName"?></td>
-		<td><?php echo "$average"?></td>
-		<td><?php echo "$ops"?></td>
+		<td><?php echo number_format("$average", 3)?></td>
+		<td><?php echo number_format("$ops", 3)?></td>
 		<td><?php echo "$gp"?> &nbsp;</td>
 		<td><?php echo "$ab"?></td>
 		<td><?php echo "$r"?></td>
@@ -116,23 +116,23 @@ while ($row = mysqli_fetch_array($result)) {
 		<td><?php echo "$hr"?></td>
 		<td><?php echo "$rbi"?></td>
 		<td><?php echo "$tb"?></td>
-		<td><?php echo "$slg"?></td>
+		<td><?php echo number_format("$slg", 3)?></td>
 		<td><?php echo "$bb"?></td>
 		<td><?php echo "$hbp"?></td>
 		<td><?php echo "$so"?></td>
 		<td><?php echo "$gdp"?></td>
-		<td><?php echo "$obp"?></td>
+		<td><?php echo number_format("$obp", 3)?></td>
 		<td><?php echo "$sf"?></td>
 		<td><?php echo "$sh"?></td>
 		<td>&nbsp;<?php echo "$sb"?></td>
-		<td><?php echo "$iso"?></td>
-		<td><?php echo "$babip"?></td>
-		<td><?php echo "$wOBA"?></td>
-		<td><?php echo "$kP"?></td>
-		<td><?php echo "$bP"?></td>
-		<td><?php echo "$wRAA"?></td>
-		<td><?php echo "$rC"?></td>
-		<td><?php echo "$bR"?></td>
+		<td><?php echo number_format("$iso",3 )?></td>
+		<td><?php echo number_format("$babip", 3)?></td>
+		<td><?php echo number_format("$wOBA", 3)?></td>
+		<td><?php echo number_format("$kP", 3)?></td>
+		<td><?php echo number_format("$bP" ,3)?></td>
+		<td><?php echo number_format("$wRAA", 3)?></td>
+		<td><?php echo number_format("$rC", 3)?></td>
+		<td><?php echo number_format("$bR", 3)?></td>
 		
 	</tr>
 <?php 

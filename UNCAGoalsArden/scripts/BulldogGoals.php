@@ -82,9 +82,9 @@ numOfAtBats, goalsTotal FROM uncagoals ORDER BY id DESC";
     
     
    	<form class= 'datecenter' onsubmit= " return validDates();" action= "https://www.cs.unca.edu/~tlittle2/UNCAGoals/queries/seeDates.php" method= "post">
-    <table>
+    <table class = "dateTable">
         <tr>
-        <td>
+        <td style= "width: 400px">
         <div id= 'date'>Please input dates you want to see statistics for: </div>
         </td>
         
@@ -106,7 +106,7 @@ numOfAtBats, goalsTotal FROM uncagoals ORDER BY id DESC";
          <input type= "submit" id= "dateSubmit" value= "Submit Dates">
         </td>
         </tr>
-    
+   
     </table>
     </form>
     <br><br>
@@ -119,7 +119,7 @@ numOfAtBats, goalsTotal FROM uncagoals ORDER BY id DESC";
 </div>
 
 <!--  <a href= "#bottom">Click here to go to the bottom</a>-->
-        <table class= "dataTable" id= "dataTable">
+        <table class= "dataTable" width = "100%" id= "dataTable">
 		<tr>
 			<!-- <th>ID</th> -->
 			<th class= "border">Date</th>

@@ -12,6 +12,7 @@ body{
 
 .centertitle{
 	text-align: center;
+	padding-right: 10px;
 	font-family: Verdana;
 	font-size: 80%;	
 	text-decoration: underline;
@@ -29,6 +30,11 @@ table.logoff{
 
 td.noborder{
 	border: none;
+}
+
+
+td.datetext{
+	width: 1000px;
 }
 
 
@@ -64,6 +70,10 @@ td.gameResult{
 	table-align: center;
 	
 	
+}
+
+.dateTable{
+	padding-right: 10px;
 }
 
 td{

@@ -54,7 +54,14 @@ echo "<br>";
 $query = "SELECT SUM(runsScored) - SUM(runsAllowed) as RunDifferential FROM uncagoals;";
 $result = mysqli_query($con, $query);
 while($row = mysqli_fetch_assoc($result)){
-    echo "Run Differential: ". ($row['RunDifferential']);
+    if($row['RunDifferential'] > 0){
+        echo "Run Differential: +". ($row['RunDifferential']);
+        
+    }else{
+        echo "Run Differential: ". ($row['RunDifferential']);
+        
+    }
+    
 }   
 
 

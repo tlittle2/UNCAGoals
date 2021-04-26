@@ -229,7 +229,14 @@ bigInningAllowed, leadoffOuts, pitchesThrown, gameResult, numOfQualities, numOfA
     $query->execute();
     $query->bind_result($RunDifferential);
     $query->fetch();
-    echo "Run Differential: " . ($RunDifferential);
+    if($RunDifferential > 0){
+        echo "Run Differential: +" . ($RunDifferential);
+        
+    }else{
+        echo "Run Differential: " . ($RunDifferential);
+
+    }
+    
     $query->close();
     
     

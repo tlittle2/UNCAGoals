@@ -127,19 +127,19 @@ while ($row = mysqli_fetch_array($result)) {
 		<td><?php echo "$b3"?></td>
 		<td><?php echo "$hr"?></td>
 		<td><?php echo "$ab"?></td>
-		<td><?php echo "$ba"?></td>
+		<td><?php echo number_format("$ba", 3)?></td>
 		<td><?php echo "$wp"?></td>
 		<td><?php echo "$hbp"?></td>
 		<td><?php echo "$bk"?></td>
 		<td><?php echo "$sfa"?></td>
 		<td><?php echo "$sha"?></td>
-		<td><?php echo "$fip"?></td>
-		<td><?php echo "$kP"?></td>
-		<td><?php echo "$bbP"?></td>
-		<td><?php echo "$kPer9"?></td>
-		<td><?php echo "$bbPer9"?></td>
-		<td><?php echo "$hrPer9"?></td>
-		<td><?php echo "$babip"?></td>
+		<td><?php echo number_format("$fip", 3)?></td>
+		<td><?php echo number_format("$kP", 3)?></td>
+		<td><?php echo number_format("$bbP", 3)?></td>
+		<td><?php echo number_format("$kPer9", 3)?></td>
+		<td><?php echo number_format("$bbPer9", 3)?></td>
+		<td><?php echo number_format("$hrPer9", 3)?></td>
+		<td><?php echo number_format("$babip", 3)?></td>
 	</tr>
 <?php 
 
